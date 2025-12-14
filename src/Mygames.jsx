@@ -3,6 +3,8 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
+const MAX_COUNT = 10;
+
 function Mygames() {
   const [count, setCount] = useState(0)
   //最初の1秒はこちらの値がtimeにセットされる
@@ -37,7 +39,14 @@ function Mygames() {
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
-        <p style={{ marginTop: '15px', fontWeight: 'bold' }}>
+        {
+          count > MAX_COUNT && (
+            <p className="warning-text">
+              警告: カウンターが {MAX_COUNT} を超えました!
+            </p>
+          )
+        }
+        <p className="time-display">
           現在時刻: {time}
         </p>
         <p>

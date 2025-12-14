@@ -40,3 +40,14 @@
 .read-the-docs {
   color: #888;
 }
+
+.warning-text {
+  color: red;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.time-display {
+  margin-top: 15px;
+  font-weight: bold;
+}
