@@ -1,10 +1,23 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 
 function Mygames() {
   const [count, setCount] = useState(0)
+  //最初の1秒はこちらの値がtimeにセットされる
+  // const [time, setTime] = useState(new Date().toLocaleString())
+  const [time, setTime] = useState(new Date().toDateString())
+  useEffect(() =>{
+    const timerId = setInterval(() => {
+      setTime(new Date().toLocaleString())
+    }, 1000)
+    // クリーンアップ処理: コンポーネントが消える時にタイマーを停止
+    return () => {
+      clearInterval(timerId)
+    }
+  }, [])
+
 
   return (
     <>
@@ -24,6 +37,9 @@ function Mygames() {
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
+        <p style={{ marginTop: '15px', fontWeight: 'bold' }}>
+          現在時刻: {time}
+        </p>
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
