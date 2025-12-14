@@ -36,7 +36,10 @@ function Mygames() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
+        <button 
+          onClick={() => setCount((count) => count + 1)}
+          disabled={count > MAX_COUNT}
+        >
           count is {count}
         </button>
         {
